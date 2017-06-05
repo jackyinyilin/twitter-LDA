@@ -1,7 +1,8 @@
-install.packages("twitteR", repos="http://cran.rstudio.com/") 
-install.packages("proxy", repos="http://cran.rstudio.com/") 
-
-
+LDAvis/R/createJSON.R
+###Version 1.0.0
+#Author: Yilin Yin
+#Date June 2nd 2017
+#
 #packages.
 library(twitteR)
 library(MASS)
@@ -17,18 +18,20 @@ library(proxy)
 library(stringi)
 library(servr)
 
-
-
-consumer_key <- "7mFLUUXBIgkmkvLtCeNEpaqB2"
-consumer_secret <- "ygnkKgV7Hs4H5IllMEECbtMyIuKfLQGmXDHVieMgbIWeZIvzLE"
-access_token <- "4226019133-y3OKHQdhu7wHz0ava5Fn9u7hIGPslKB9uAIb3tB"
-access_secret <- "gbGZangTYcuFAoihTDEwTLDKjcJqRPDyR2dCibeHoPt6p"
+#call for API authorization from Twitter. 
+consumer_key <- "#Your consumer key#"
+consumer_secret <- "#Your consumer secret#"
+access_token <- "#Your access token#"
+access_secret <- "#Your access secret#"
 
 setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 
-#get the tweets.(only 7116 received because of limitation.)
-tweets <- searchTwitter("anxiety mental health OR anxiety mental OR 'anxiety' OR #anxiety", n=10000, lang="en", since="2004-08-20")
+#get the tweets.
+#set up the real-time key words and get the string from the twitter.
+tweets <- searchTwitter("#Key Words#", n=10000, lang="en", since="2004-08-20")
+#add each string into data frame.
 data <- do.call("rbind", lapply(tweets, as.data.frame))
+#make a copy.
 df <- data
 
 
