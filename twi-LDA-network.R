@@ -1,6 +1,5 @@
 LDAvis/R/createJSON.R
 ###Version 1.0.0
-#Author: Yilin Yin
 #Date June 2nd 2017
 #
 #packages.
